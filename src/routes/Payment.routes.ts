@@ -19,7 +19,7 @@ PaymentRouter.post('/', (req: Request, res: Response) => {
   });
 
   if (failures.length) {
-    res.statusMessage = 'Error making some payments';
+    res.statusMessage = 'Error haciendo algunos pagos. Por favor validar los datos';
     res.status(400);
     res.send({ payments: failures });
 
