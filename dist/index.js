@@ -37,14 +37,14 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 app.use((0, cors_1.default)({ origin: '*', methods: ['GET', 'POST'] }));
-app.use(express_1.default.static(path.join(__dirname, '..', 'dist')));
+app.use(express_1.default.static(path.join(__dirname, 'dist')));
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use('/home', Home_routes_1.default);
 app.use('/payment', Payment_routes_1.default);
 app.get('*', (req, resp) => {
     console.log(__dirname);
-    resp.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
+    resp.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 app.listen(PORT, () => {
     console.log("Listening in port: ", PORT);
