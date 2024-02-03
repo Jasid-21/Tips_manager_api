@@ -11,7 +11,7 @@ dotenv.config();
 const app: Express = express();
 const PORT = process.env.PORT || 3000;
 app.use(cors({ origin: '*', methods: ['GET', 'POST'] }));
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, 'app')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -20,7 +20,7 @@ app.use('/payment', PaymentRouter);
 
 app.get('*', (req: Request, resp: Response) => {
   console.log(__dirname);
-  resp.sendFile(path.join(__dirname, 'index.html'));
+  resp.sendFile(path.join(__dirname, 'app', 'index.html'));
 });
 
 app.listen(PORT, () => {
